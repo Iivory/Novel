@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.blank.dao.mapper.NovelMapper" >
+  <resultMap id="BaseResultMap" type="cn.blank.pojo.Novel" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="bookName" property="bookname" jdbcType="VARCHAR" />
+    <result column="bookUrl" property="bookurl" jdbcType="VARCHAR" />
+    <result column="lastChapterurl" property="lastchapterurl" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="lastChapter" property="lastchapter" jdbcType="VARCHAR" />
+    <result column="size" property="size" jdbcType="VARCHAR" />
+    <result column="lastUpdate" property="lastupdate" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+
+  <sql id="Base_Column_List" >
+    id, bookName, bookUrl, lastChapterurl, author, type, status, lastChapter, size, lastUpdate
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from novel
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from novel
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="cn.blank.pojo.Novel" >
+    insert into novel (id, bookName, bookUrl, 
+      lastChapterurl, author, type, 
+      status, lastChapter, size, 
+      lastUpdate)
+    values (#{id,jdbcType=INTEGER}, #{bookname,jdbcType=VARCHAR}, #{bookurl,jdbcType=VARCHAR}, 
+      #{lastchapterurl,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{lastchapter,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, 
+      #{lastupdate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.blank.pojo.Novel" >
+    insert into novel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bookname != null" >
+        bookName,
+      </if>
+      <if test="bookurl != null" >
+        bookUrl,
+      </if>
+      <if test="lastchapterurl != null" >
+        lastChapterurl,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="lastchapter != null" >
+        lastChapter,
+      </if>
+      <if test="size != null" >
+        size,
+      </if>
+      <if test="lastupdate != null" >
+        lastUpdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bookname != null" >
+        #{bookname,jdbcType=VARCHAR},
+      </if>
+      <if test="bookurl != null" >
+        #{bookurl,jdbcType=VARCHAR},
+      </if>
+      <if test="lastchapterurl != null" >
+        #{lastchapterurl,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastchapter != null" >
+        #{lastchapter,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null" >
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdate != null" >
+        #{lastupdate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+ 
+
+  <update id="updateByPrimaryKeySelective" parameterType="cn.blank.pojo.Novel" >
+    update novel
+    <set >
+      <if test="bookname != null" >
+        bookName = #{bookname,jdbcType=VARCHAR},
+      </if>
+      <if test="bookurl != null" >
+        bookUrl = #{bookurl,jdbcType=VARCHAR},
+      </if>
+      <if test="lastchapterurl != null" >
+        lastChapterurl = #{lastchapterurl,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastchapter != null" >
+        lastChapter = #{lastchapter,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null" >
+        size = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdate != null" >
+        lastUpdate = #{lastupdate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.blank.pojo.Novel" >
+    update novel
+    set bookName = #{bookname,jdbcType=VARCHAR},
+      bookUrl = #{bookurl,jdbcType=VARCHAR},
+      lastChapterurl = #{lastchapterurl,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      lastChapter = #{lastchapter,jdbcType=VARCHAR},
+      size = #{size,jdbcType=VARCHAR},
+      lastUpdate = #{lastupdate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <sql id="values">
+  	bookName,bookUrl ,lastChapterurl, author, type, status,lastChapter, size,lastUpdate
+  </sql>
+  
+  <insert id="batchInsert" parameterType="java.util.List">
+  	INSERT INTO novel (bookName,bookUrl ,lastChapterurl, author, type, status,lastChapter, size,lastUpdate )
+     VALUES
+      <foreach collection="list" item="item" index="index" separator=",">
+      	(
+      		#{item.bookname},#{item.bookurl},#{item.lastchapterurl},#{item.author},
+      		#{item.type},#{item.status},#{item.lastchapter},#{item.size},#{item.lastupdate}
+      	)
+      </foreach>
+  </insert>
+  
+  <select id="selectCountByKeywords" parameterType="String" resultType="Integer">
+  	select 
+	count(*)
+  	from novel where bookName like #{keywords} or author like #{keywords}
+  </select>
+  
+  <select id="getNovelsByKeywords" resultMap="BaseResultMap">
+  	select 
+  	<include refid="values"/>
+  	from novel  where bookName like #{0} or author like #{0} limit #{1},#{2}
+  </select>
+ 
+</mapper>

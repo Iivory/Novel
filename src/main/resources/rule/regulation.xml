@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<websites>
+	<website>
+		<title>笔下文学</title>
+		<uri>www.bxwx9.org</uri>
+		<charset>utf-8</charset>
+		<bookstack-url>.first</bookstack-url>
+		<bookstack-pages>.last</bookstack-pages>
+		<novels>.grid tr</novels>
+		<novel-menu>#TabCss a</novel-menu>
+		<novel-chapter-title>#title</novel-chapter-title>
+		<novel-content>#content</novel-content>
+		<novel-prevous>#footlink a:eq(2)</novel-prevous>
+		<novel-next>#footlink a:eq(4)</novel-next>
+	</website>
+	<website>
+		<title>顶点小说</title>
+		<uri>www.23us.so</uri>
+		<charset>utf-8</charset>
+		<bookstack-url>.first</bookstack-url>
+		<bookstack-pages>.last</bookstack-pages>
+		<novels>#content tr</novels>
+		<novel-menu>.L a</novel-menu>
+		<novel-chapter-title>h1</novel-chapter-title>
+		<novel-content>#contents</novel-content>
+		<novel-prevous>#footlink a:eq(0)</novel-prevous>
+		<novel-next>#footlink a:eq(2)</novel-next>
+	</website>
+</websites>
